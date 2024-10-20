@@ -1,0 +1,37 @@
+{% extends 'tasks/layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main class="box">
+        <h1 style="margin: 25px;">Nuevo Estudiante</h1>
+        <form class="form-agregar" action="{% url 'nuevo' %}" method="POST">
+            {% csrf_token %}
+            {% if message %}
+            <div class="alert alert-warning">
+                {{message}}
+            </div>
+            {% endif %}
+            <div class="input-field-agregar">
+                <input type="text" class="input-agregar" placeholder="Nombres" name="nombre">
+            </div>
+            <div class="input-field-agregar">
+                <input type="text" class="input-agregar" placeholder="Apellidos" name="apellido">
+            </div>
+            <div class="input-field-agregar">
+                <select class="input-agregar" name="carrera" >
+                    <option selected>Seleccionar carrera...</option>
+                    {% for carrera in list_carreras %}
+                    <option value="{{carrera}}">{{carrera}}</option>
+                    {% endfor %}
+                  </select>
+            </div>
+            <div class="input-field-agregar">
+                <input type="number" class="input-agregar" placeholder="N° Carnet" name="carnet">
+            </div>
+            <div class="btn-enviar">
+                <button type="submit" class="btn - btn-success">Agregar</button>
+            </div>
+        </form>
+    </main>
+{% endblock %}

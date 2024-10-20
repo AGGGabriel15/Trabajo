@@ -1,0 +1,37 @@
+{% extends 'tasks/layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+    <main class="box">
+        <section style="padding: 15px;">
+            <h1>Estudiantes</h1>
+        </section>
+        <section class="tabla-box">
+            <table class="table table-striped">
+                <thead>
+                  <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nombres</th>
+                    <th scope="col">Apellidos</th>
+                    <th scope="col">Carrera</th>
+                    <th scope="col">N° Carnet</th>
+                    <th scope="col"></th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for estudiante in list_estudiantes %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ estudiante.nombre }}</td>
+                        <td>{{ estudiante.apellido }}</td>
+                        <td>{{ estudiante.carrera_on }}</td>
+                        <td>{{ estudiante.carnet }}</td>
+                        <td><a href="{% url 'editar' estudiante.id %}" class="btn btn-primary mx-2">Editar</a><a href="{% url 'eliminar' estudiante.id %}" class="btn btn-danger">Eliminar</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+        </section>
+    </main>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'tasks/layout.html' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+<section class="block">
+    <div class="block-contenedor">
+        
+        {% if message %}
+        <div class="alert alert-warning">{{ message }}</div>
+        {% endif %}
+        <h2 class="log">Register</h2>
+    
+        <form action="{% url 'register' %}" class="form" method="post">
+            {% csrf_token %}
+            <div class="input-field mb-3">
+                <i class="fa-solid fa-user icon"></i><input autofocus class="input" type="text" autocomplete="off"  name="username" placeholder="Username">
+            </div>
+            <div class="input-field mb-3">
+                <i class="fa-solid fa-user icon"></i><input autofocus class="input" type="email" name="email" placeholder="Email">
+            </div>
+            <div class="input-field mb-3">
+                <i class="fa-solid fa-lock icon"></i><input class="input" type="password" name="password" placeholder="Password">
+            </div>
+            <div class="input-field mb-3">
+                <i class="fa-solid fa-lock icon"></i><input class="input" type="password" name="confirmation" placeholder="Confirm Password">
+            </div>
+            <input class="btn btn-primary" type="submit" value="Register">
+        </form>
+    
+        <p style="color: #fff;">Don't have an account? <a href="{% url 'register' %}">Register here.</a></p>
+    </div>
+</section>    
+{% endblock %}
