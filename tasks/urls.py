@@ -9,5 +9,4 @@ urlpatterns = [
     path('nuevo/', views.new_estudiante, name="nuevo"),
     path('editar/<int:id>', views.editar, name="editar"),
     path('eliminar/<int:id>', views.eliminar, name="eliminar"),
-
 ]
